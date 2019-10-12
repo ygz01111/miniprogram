@@ -17,7 +17,7 @@ Page({
       // 要调用的云函数名称
       name: 'addData'
     }).then(res => {
-      console.log(res)
+      console.log(res.result._id)
     })
   }
 
