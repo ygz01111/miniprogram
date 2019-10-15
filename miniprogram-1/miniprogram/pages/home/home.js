@@ -1,27 +1,37 @@
+const users = wx.cloud.database().collection("users")
 Page({
-
-  navigateToAdd: function(event){
-  wx.navigateTo({
-    url: '../add/add',
-    success: function(res) {},
-    fail: function(res) {},
-    complete: function(res) {},
-  })
+  data: {
+    userlist: []
   },
-    navigateToIndex: function (event) {
-    wx.navigateTo({
-      url: '../index/index',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+  onLoad: function(options) {
+    users.get().then(res => {
+      this.setData({
+        userlist: res.data
+      })
     })
   },
-    navigateToComplex: function (event) {
-    wx.navigateTo({
-      url: '../complex/complex',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+  getUserInfo: function(result) {
+    wx.cloud.callFunction({
+      name: "getOpenid",
+      complete: res => {
+        users.where({
+          _openid: res.result.openid
+        }).count().then(res2 => {
+            if (res2.total == 0) {
+              users.add({
+                data: result.detail.userInfo
+              }).then(res => {
+                console.log(res)
+              })
+            }
+
+
+
+
+          }
+
+        )
+      }
     })
   }
 })

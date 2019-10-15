@@ -1,20 +1,20 @@
 //index.js
 const app = getApp()
-
+const products = wx.cloud.database().collection("products")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    products:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    products.get().then(res => { this.setData({ products: res.data});console.log(res)})
   },
 
   /**
@@ -64,5 +64,13 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+  onChange:function(event){
+    console.log(event.detail);
+    console.log(event.target.id);
+    this.data.products[event.target.id].num= event.detail ;
+    console.log(this.data.products);
+ 
+
   }
 })

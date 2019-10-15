@@ -1,7 +1,8 @@
-<van-card
-  num="2"
-  price="2.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
-/>
+<block wx:for="{{products}}">
+  <van-card price="{{item.price}}" desc="desc" title="{{item.title}}" thumb="{{ item.image }}">
+    <view slot="footer">
+      <van-stepper name="stepper1" input-width="40px" button-size="32px" value="{{ 1 }}" bind:change="onChange" id="{{index}}" />
+    </view>
+
+  </van-card>
+</block>

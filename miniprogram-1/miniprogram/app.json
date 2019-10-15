@@ -1,11 +1,10 @@
 {
   "pages": [
-        "pages/home/home",
     "pages/index/index",
-        "pages/add/add",
-            "pages/complex/complex",
-                        "pages/info/info"
-            
+    "pages/home/home",
+    "pages/add/add",
+    "pages/complex/complex",
+    "pages/info/info"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -13,6 +12,26 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/data/index.png",
+        "selectedIconPath": "/data/index.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/data/cart.png",
+        "selectedIconPath": "/data/cart.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "/data/account.png",
+        "selectedIconPath": "/data/account.png"
+      }
+    ],
+    "borderStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
 }
